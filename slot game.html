@@ -6,158 +6,186 @@
   <title>Fruit Slots Game</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Courier New', Courier, monospace;
       text-align: center;
-      background-color: #f7f7f7;
+      background-color: #2e2e2e;
+      color: #fff;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-
     h1 {
       margin-top: 20px;
-      color: #333;
+      color: #ff0000;
+      text-shadow: 2px 2px 4px #000;
+      font-size: 2.5rem;
     }
-
+    .machine-container {
+      background-color: #4d4d4d;
+      border: 8px solid #333;
+      padding: 30px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      width: 600px;
+      text-align: center;
+    }
     .slots-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 20px auto;
+      margin: 30px auto;
       gap: 20px;
+      border: 20px solid #ff0000;
+      padding: 20px;
+      background-color: #333;
     }
-
     .slot {
-      width: 100px;
-      height: 100px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      background-color: #fff;
+      width: 150px;
+      height: 180px;
+      background-color: #000;
       overflow: hidden;
       position: relative;
-      display: flex; /* Use flexbox for centering */
-      justify-content: center; /* Center horizontally */
-      align-items: center; /* Center vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
     .slot span {
-      font-size: 48px; /* Increase font size for better visibility */
+      font-size: 80px;
       font-weight: bold;
-      color: #333;
+      color: #ff0000;
+      text-shadow: 2px 2px 4px #000;
       transition: transform 0.5s ease-in-out;
     }
-
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background: linear-gradient(to bottom, #4d4d4d, #2e2e2e);
+      color: #fff;
+      border: 3px solid #2e2e2e;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin: 10px;
+      border-radius: 0;
     }
-
     button:hover {
-      background-color: #0056b3;
+      background: linear-gradient(to bottom, #666, #4d4d4d);
+      transform: scale(1.1);
     }
-
     .bet-section {
-      margin: 20px 0;
+      margin: 30px 0;
     }
-
     .bet-buttons {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
-
     .bet-buttons button {
-      margin: 0 5px;
-      padding: 5px 10px;
-      font-size: 14px;
-    }
-
-    .selected-bet {
-      font-size: 18px;
+      margin: 0;
+      padding: 12px 24px;
+      font-size: 20px;
       font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
+      border-radius: 0;
     }
-
-    .balance {
-      font-size: 18px;
+    .spin-button {
+      padding: 15px 30px;
+      font-size: 24px;
       font-weight: bold;
-      color: #333;
-    }
-
-    .result {
       margin-top: 20px;
-      font-size: 18px;
+      border-radius: 0;
+    }
+    .selected-bet {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff0000;
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    .balance {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff0000;
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 24px;
       font-weight: bold;
     }
-
     .win {
-      color: green;
+      color: #00ff00;
+      text-shadow: 2px 2px 4px #000;
     }
-
     .lose {
-      color: red;
+      color: #ff0000;
+      text-shadow: 2px 2px 4px #000;
     }
   </style>
 </head>
 <body>
-  <h1>Fruit Slots Game</h1>
-  <div class="slots-container">
-    <div class="slot" id="slot1"><span>?</span></div>
-    <div class="slot" id="slot2"><span>?</span></div>
-    <div class="slot" id="slot3"><span>?</span></div>
-  </div>
-  <div class="bet-section">
-    <div class="bet-buttons">
-      <button onclick="setBet(1)">Bet $1</button>
-      <button onclick="setBet(5)">Bet $5</button>
-      <button onclick="setBet(20)">Bet $20</button>
-      <button onclick="setBet(100)">Bet $100</button>
+  <h1>Fruit Slots Machine</h1>
+  <div class="machine-container">
+    <div class="slots-container">
+      <div class="slot" id="slot1"><span>🍒</span></div>
+      <div class="slot" id="slot2"><span>🍋</span></div>
+      <div class="slot" id="slot3"><span>🍇</span></div>
     </div>
-    <div class="selected-bet">Selected Bet: <span id="selected-bet">$1</span></div>
-    <div class="balance" id="balance">Balance: $100</div>
-    <button onclick="spinSlots()">Spin!</button>
+    <div class="bet-section">
+      <div class="bet-buttons">
+        <button onclick="setBet(1)">Bet $1</button>
+        <button onclick="setBet(5)">Bet $5</button>
+        <button onclick="setBet(20)">Bet $20</button>
+        <button onclick="setBet(100)">Bet $100</button>
+      </div>
+      <div class="selected-bet">Selected Bet: <span id="selected-bet">$1</span></div>
+      <div class="balance" id="balance">Balance: $100</div>
+      <button class="spin-button" onclick="spinSlots()">Spin!</button>
+    </div>
+    <div class="result" id="result"></div>
   </div>
-  <div class="result" id="result"></div>
-
   <script>
-    // Initialize variables
-    let balance = 100; // Starting balance
+    let balance = 100;
     const fruits = ["🍒", "🍋", "🍇", "🍉", "🍓", "🍌", "🍍", "🍎"];
     let intervals = {};
     let finalResults = {};
-    let currentBet = 1; // Default bet amount
+    let currentBet = 1;
 
-    // Function to update the balance display
     function updateBalance() {
       document.getElementById("balance").textContent = `Balance: $${balance}`;
     }
 
-    // Function to set the selected bet amount
     function setBet(amount) {
       currentBet = amount;
       document.getElementById("selected-bet").textContent = `$${amount}`;
     }
 
-    // Function to simulate vertical spinning animation
+    function initializeSlots() {
+      document.getElementById("slot1").querySelector("span").textContent =
+        fruits[Math.floor(Math.random() * fruits.length)];
+      document.getElementById("slot2").querySelector("span").textContent =
+        fruits[Math.floor(Math.random() * fruits.length)];
+      document.getElementById("slot3").querySelector("span").textContent =
+        fruits[Math.floor(Math.random() * fruits.length)];
+    }
+
     function spinSlot(slotId) {
       const slot = document.getElementById(slotId);
       const span = slot.querySelector("span");
-
-      // Generate a random sequence of fruits for the spin
       const randomFruits = [];
       for (let i = 0; i < 10; i++) {
         randomFruits.push(fruits[Math.floor(Math.random() * fruits.length)]);
       }
-
-      // Add the final fruit at the end of the sequence
       const finalFruit = fruits[Math.floor(Math.random() * fruits.length)];
       randomFruits.push(finalFruit);
-
-      // Animate the vertical spin
       let index = 0;
       intervals[slotId] = setInterval(() => {
         if (index < randomFruits.length) {
@@ -165,95 +193,61 @@
           index++;
         } else {
           clearInterval(intervals[slotId]);
-          finalResults[slotId] = finalFruit; // Store the final result
+          finalResults[slotId] = finalFruit;
         }
-      }, 100); // Adjust speed of spin here
+      }, 100);
     }
 
-    // Function to spin all slots and check for a win
     function spinSlots() {
-      // Validate the bet amount
       if (currentBet > balance) {
         alert("You don't have enough balance to place this bet.");
         return;
       }
-
-      // Deduct the bet amount from the balance
       balance -= currentBet;
       updateBalance();
-
-      // Reset intervals and final results
       intervals = {};
       finalResults = {};
-
-      // Spin each slot
       spinSlot("slot1");
       spinSlot("slot2");
       spinSlot("slot3");
-
-      // Check for a win after all spins are complete
       setTimeout(() => {
         const slot1Result = finalResults["slot1"];
         const slot2Result = finalResults["slot2"];
         const slot3Result = finalResults["slot3"];
-
         const resultDiv = document.getElementById("result");
         let winnings = 0;
-
-        // Determine payouts based on the number of matching fruits and the bet amount
         if (slot1Result === slot2Result && slot2Result === slot3Result) {
-          // All three fruits match
           switch (currentBet) {
-            case 1:
-              winnings = 10;
-              break;
-            case 5:
-              winnings = 50;
-              break;
-            case 20:
-              winnings = 200;
-              break;
-            case 100:
-              winnings = 1000;
-              break;
+            case 1: winnings = 10; break;
+            case 5: winnings = 50; break;
+            case 20: winnings = 200; break;
+            case 100: winnings = 1000; break;
           }
-          resultDiv.textContent = `🎉 You Win! 🎉 +$${winnings}`;
+          resultDiv.textContent = `🎉 JACKPOT! 🎉 +$${winnings}`;
           resultDiv.className = "result win";
         } else if (
           slot1Result === slot2Result ||
           slot1Result === slot3Result ||
           slot2Result === slot3Result
         ) {
-          // Two fruits match
           switch (currentBet) {
-            case 1:
-              winnings = 5;
-              break;
-            case 5:
-              winnings = 25;
-              break;
-            case 20:
-              winnings = 100;
-              break;
-            case 100:
-              winnings = 500;
-              break;
+            case 1: winnings = 5; break;
+            case 5: winnings = 25; break;
+            case 20: winnings = 100; break;
+            case 100: winnings = 500; break;
           }
           resultDiv.textContent = `🎉 You Win! 🎉 +$${winnings}`;
           resultDiv.className = "result win";
         } else {
-          // No matches
           resultDiv.textContent = "❌ Try Again! ❌";
           resultDiv.className = "result lose";
         }
-
-        // Add winnings to the balance
         balance += winnings;
-
-        // Update the balance display
         updateBalance();
-      }, 1500); // Wait for spins to finish before showing result
+      }, 1500);
     }
+
+    window.onload = initializeSlots;
   </script>
 </body>
 </html>
