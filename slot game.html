@@ -62,16 +62,17 @@
     button {
       padding: 12px 24px;
       font-size: 18px;
-      background: linear-gradient(to bottom, #4d4d4d, #2e2e2e);
+      background: linear-gradient(to bottom, #ffd700, #808080); /* Gold to gray overlay */
       color: #fff;
       border: 3px solid #2e2e2e;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
       margin: 10px;
       border-radius: 0;
+      box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5); /* Bottom-right shadow */
     }
     button:hover {
-      background: linear-gradient(to bottom, #666, #4d4d4d);
+      background: linear-gradient(to bottom, #ffcc00, #666); /* Slightly lighter gradient on hover */
       transform: scale(1.1);
     }
     .bet-section {
@@ -90,14 +91,8 @@
       font-weight: bold;
       border-radius: 0;
     }
-    .spin-button {
-      padding: 15px 30px;
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 20px;
-      border-radius: 0;
-    }
-    .selected-bet {
+    .selected-bet,
+    .balance {
       font-size: 22px;
       font-weight: bold;
       color: #ff0000;
@@ -107,14 +102,21 @@
       margin-bottom: 15px;
       display: inline-block;
     }
-    .balance {
-      font-size: 22px;
+    .spin-button {
+      padding: 15px 40px; /* Wider button */
+      font-size: 24px;
       font-weight: bold;
-      color: #ff0000;
-      background-color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      display: inline-block;
+      margin-top: 20px;
+      border-radius: 0;
+      width: 80%; /* Make the button wider */
+      max-width: 300px; /* Limit maximum width */
+      margin-left: auto; /* Center the button */
+      margin-right: auto;
+      background: linear-gradient(to bottom, #ffd700, #808080); /* Gold to gray overlay */
+      box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5); /* Bottom-right shadow */
+    }
+    .spin-button:hover {
+      background: linear-gradient(to bottom, #ffcc00, #666); /* Slightly lighter gradient on hover */
     }
     .result {
       margin-top: 30px;
